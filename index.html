@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Filmografía de Cantinflas</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f4f4f4;
+        }
+        h1 {
+            color: #d35400;
+        }
+        #search {
+            padding: 10px;
+            width: 80%;
+            max-width: 400px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1 style="font-size: 24px; font-weight: bold;">Filmografía de Cantinflas</h1>
+    <input type="text" id="search" placeholder="Buscar película..." onkeyup="filtrarPeliculas()">
+    <ul id="filmografia">
+        <li onclick="toggleDescripcion(this)">Ahí está el detalle (1940)<span class="descripcion">Una de las películas más icónicas de Cantinflas, donde confunde una confesión con un crimen.</span></li>
+        <li onclick="toggleDescripcion(this)">El gendarme desconocido (1941)<span class="descripcion">Cantinflas se convierte en un oficial de policía con métodos poco ortodoxos.</span></li>
+        <li onclick="toggleDescripcion(this)">Ni sangre ni arena (1941)<span class="descripcion">Parodia del mundo taurino en la que Cantinflas se ve envuelto en situaciones absurdas.</span></li>
+        <li onclick="toggleDescripcion(this)">Los tres mosqueteros (1942)<span class="descripcion">Adaptación cómica de la novela de Alejandro Dumas con Cantinflas como protagonista.</span></li>
+        <li onclick="toggleDescripcion(this)">Un día con el Diablo (1945)<span class="descripcion">Cantinflas se encuentra enredado en una trama militar llena de humor.</span></li>
+        <li onclick="toggleDescripcion(this)">El mago (1949)<span class="descripcion">Una historia mágica donde Cantinflas usa su ingenio para salir de problemas.</span></li>
+        <li onclick="toggleDescripcion(this)">El bombero atómico (1952)<span class="descripcion">Cantinflas se convierte en bombero y enfrenta diversas situaciones cómicas.</span></li>
+        <li onclick="toggleDescripcion(this)">El señor fotógrafo (1953)<span class="descripcion">Cantinflas como fotógrafo enfrenta una serie de enredos divertidos.</span></li>
+        <li onclick="toggleDescripcion(this)">Abajo el telón (1955)<span class="descripcion">Cantinflas se mete en el mundo del teatro con hilarantes consecuencias.</span></li>
+        <li onclick="toggleDescripcion(this)">El padrecito (1964)<span class="descripcion">Cantinflas interpreta a un sacerdote con un estilo muy particular.</span></li>
+    </ul>
+    <script>
+        function filtrarPeliculas() {
+            let input = document.getElementById("search").value.toLowerCase();
+            let lista = document.getElementById("filmografia");
+            let peliculas = lista.getElementsByTagName("li");
+            
+            for (let i = 0; i < peliculas.length; i++) {
+                let pelicula = peliculas[i].textContent.toLowerCase();
+                if (pelicula.includes(input)) {
+                    peliculas[i].style.display = "";
+                } else {
+                    peliculas[i].style.display = "none";
+                }
+            }
+        }
+        
+        function toggleDescripcion(element) {
+            let descripcion = element.querySelector(".descripcion");
+            descripcion.style.display = descripcion.style.display === "none" || descripcion.style.display === "" ? "block" : "none";
+        }
+    </script>
+</body>
+</html>
